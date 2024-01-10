@@ -8,7 +8,7 @@ jobs:
     name: Build Job
     runs-on: ubuntu-latest
     steps:
-      - name: 'Start build job'
+      - name: Start build job
         run: |
           echo "Starting the build job."
       - name: Checkout
@@ -16,7 +16,8 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v4.0.0
         with:
+          distribution: 'temurin'
           java-version: 17
-      - name: 'Check Java Version'
+      - name: Check Java Version
         run: |
           java --version
