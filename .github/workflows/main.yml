@@ -2,14 +2,14 @@ name: cicd-demo
 on:
   push:
     branches:
-      - '*'
+      - '**'
 jobs:
   build-job:
     name: Build Job
     runs-on: ubuntu-latest
     steps:
       - name: Start build job
-        run: |
+        run: |  
           echo "Starting the build job."
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -19,5 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: 17
       - name: Check Java Version
-        run: |
+        run: |  
           java --version
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+      - name: Assemble JAR
+        run: |  
+          ./gradlew assemble  
+  
